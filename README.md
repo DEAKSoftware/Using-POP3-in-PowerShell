@@ -39,6 +39,7 @@ Before using the demo code, the following tools and libraries are required. You 
 	$incomingEnableSSL = $true
 	```
 
+5. The `.\Temp` subdirectory is where the attachments will be saved in this demo. You may change the output location by editing `Source\FetchMail.ps1` and specifying a different path for `$tempBaseURL`.
 
 ## 3 Supporting Resources
 
