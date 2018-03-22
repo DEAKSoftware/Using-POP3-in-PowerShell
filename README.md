@@ -1,4 +1,4 @@
-# Fetching Email in PowerShell
+# Using POP3 in PowerShell
 
 Dominik Deák
 
@@ -43,7 +43,7 @@ Before using the demo code, the following tools and libraries are required. You 
 
 ## 3 Supporting Resources
 
-* [Fetching Email in PowerShell](https://deaksoftware.com.au/articles/fetching_email_in_powershell/) - Main article
+* [Using POP3 in PowerShell](https://deaksoftware.com.au/articles/using_pop3_in_powershell/) - Main article
 
 
 ## 4 Legal and Copyright

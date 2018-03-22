@@ -1,5 +1,5 @@
 <#---------------------------------------------------------------------------
-   Fetching Email in PowerShell
+   Using POP3 in PowerShell
 
    Dominik Deak <deak.software@gmail.com>, DEAK Software
 
@@ -28,8 +28,8 @@
 
    Supporting Resources:
 
-   * Article: <https://deaksoftware.com.au/articles/fetching_email_in_powershell/>
-   * GitHub: <https://github.com/DEAKSoftware/Fetching-Email-in-PowerShell/>
+   * Article: <https://deaksoftware.com.au/articles/using_pop3_in_powershell/>
+   * GitHub: <https://github.com/DEAKSoftware/Using-POP3-in-PowerShell/>
 
    Legal and Copyright:
 
@@ -54,7 +54,7 @@
    DEALINGS IN THE SOFTWARE.
   ---------------------------------------------------------------------------#>
 
-Write-Host "Fetching Email in PowerShell - Dominik Deak <deak.software@gmail.com>, DEAK Software" -ForegroundColor Yellow
+Write-Host "Using POP3 in PowerShell - Dominik Deak <deak.software@gmail.com>, DEAK Software" -ForegroundColor Yellow
 
 <#---------------------------------------------------------------------------
    Configuration data.
