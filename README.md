@@ -41,6 +41,8 @@ Before using the demo code, the following tools and libraries are required. You 
 
 5. The `.\Temp` subdirectory is where the attachments will be saved in this demo. You may change the output location by editing `Source\FetchMail.ps1` and specifying a different path for `$tempBaseURL`.
 
+6. Edit the test email file `Examples\Test-Message.eml` and change the `To:` and `From:` header fields to whatever is appropriate.
+
 ## 3 Supporting Resources
 
 * [Using POP3 in PowerShell](https://deaksoftware.com.au/articles/using_pop3_in_powershell/) - Main article

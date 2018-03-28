@@ -62,6 +62,7 @@ Write-Host "Using POP3 in PowerShell - Dominik Deak <deak.software@gmail.com>, D
 # Path configurations
 $openPopLibraryURL = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( "..\Binaries\OpenPop.dll" )
 $tempBaseURL       = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( "..\Temp\" ) # Or use system temp dir via [System.IO.Path]::GetTempPath()
+$testMessageURL    = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath( "..\Examples\Test-Message.eml" )
 
 # Incoming email configuration used for fetching messages
 $incomingUsername  = ""
@@ -141,7 +142,7 @@ function saveMessage
 
    New-Item -Path $outURL -ItemType "File" -Force | Out-Null
 
-   $outStream = New-Object IO.FileStream $outURL, "Create"
+   $outStream = New-Object System.IO.FileStream $outURL, "Create"
 
    $incomingMessage.save( $outStream )
 
@@ -196,7 +197,7 @@ function saveAttachment
 
    New-Item -Path $outURL -ItemType "File" -Force | Out-Null
 
-   $outStream = New-Object IO.FileStream $outURL, "Create"
+   $outStream = New-Object System.IO.FileStream $outURL, "Create"
 
    $attachment.contentStream.copyTo( $outStream )
 
@@ -243,6 +244,68 @@ function fetchAndSaveAttachments
       }
    }
 
+<#---------------------------------------------------------------------------
+   Load a single OpenPop.Mime.Message message from the specified URL.
+  ---------------------------------------------------------------------------#>
+function loadMessage
+   {
+   Param ( [string] $inURL )
+
+   $inStream = New-Object System.IO.FileStream $inURL, "Open"
+
+   $message = [OpenPop.Mime.Message]::load( $inStream )
+
+   $inStream.close()
+
+   return $message
+   }
+
+<#---------------------------------------------------------------------------
+   Load the message from the specified URL, convert it to a
+   System.Net.Mail.MailMessage object, then display its contents in the
+   console.
+
+   Note: The System.Net.Mail.MailMessage object can be sent via SMTP using
+   the System.Net.Mail.SmtpClient. See .NET Frameworks documentation for
+   details.
+  ---------------------------------------------------------------------------#>
+function loadAndListMessage
+   {
+   Param ( [string] $inURL )
+
+   Write-Host "`Loading message from:" $inURL
+
+   $message = (loadMessage $inURL).toMailMessage()
+
+   Write-Host "`tFrom:" $message.from
+   Write-Host "`tTo:" $message.to
+
+   if ($message.cc)
+      {
+      Write-Host "`tCC:" $message.cc
+      }
+
+   if ($message.bcc)
+      {
+      Write-Host "`tBCC:" $message.bcc
+      }
+
+   if ($message.replyToList)
+      {
+      Write-Host "`tReply To:" $message.replyToList
+      }
+
+   if ($message.subject)
+      {
+      Write-Host "`tSubject:" $message.subject
+      }
+
+   if ($message.body)
+      {
+      Write-Host "`tBody:" $message.body
+      }
+   }
+
 
 <#---------------------------------------------------------------------------
    Run the demo.
@@ -261,6 +324,7 @@ try {
    fetchAndListMessages $pop3Client 10
    fetchAndSaveMessages $pop3Client 10 $tempBaseURL
    fetchAndSaveAttachments $pop3Client 10 $tempBaseURL
+   loadAndListMessage $testMessageURL
 
    Write-Host "Disconnecting from POP3 server: $incomingServer`:$incomingPortPOP3"
 
