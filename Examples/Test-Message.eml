@@ -1,0 +1,12 @@
+To: recipient.example@gmail.com
+From: sender.example@gmail.com
+Subject: Test Message
+Date: Thu, 29 Mar 2018 02:21:04 +1100
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.6.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-AU
+Content-Transfer-Encoding: 7bit
+
+This is a test message loaded from a file.
