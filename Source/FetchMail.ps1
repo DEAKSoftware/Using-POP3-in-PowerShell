@@ -142,7 +142,7 @@ function saveMessage
 
    New-Item -Path $outURL -ItemType "File" -Force | Out-Null
 
-   $outStream = New-Object System.IO.FileStream $outURL, "Create"
+   $outStream = New-Object IO.FileStream $outURL, "Create"
 
    $incomingMessage.save( $outStream )
 
@@ -197,7 +197,7 @@ function saveAttachment
 
    New-Item -Path $outURL -ItemType "File" -Force | Out-Null
 
-   $outStream = New-Object System.IO.FileStream $outURL, "Create"
+   $outStream = New-Object IO.FileStream $outURL, "Create"
 
    $attachment.contentStream.copyTo( $outStream )
 
@@ -251,7 +251,7 @@ function loadMessage
    {
    Param ( [string] $inURL )
 
-   $inStream = New-Object System.IO.FileStream $inURL, "Open"
+   $inStream = New-Object IO.FileStream $inURL, "Open"
 
    $message = [OpenPop.Mime.Message]::load( $inStream )
 
