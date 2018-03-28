@@ -266,8 +266,8 @@ function loadMessage
    console.
 
    Note: The System.Net.Mail.MailMessage object can be sent via SMTP using
-   the System.Net.Mail.SmtpClient. See .NET Frameworks documentation for
-   details.
+   the System.Net.Mail.SmtpClient class. See .NET Frameworks documentation
+   for details.
   ---------------------------------------------------------------------------#>
 function loadAndListMessage
    {
