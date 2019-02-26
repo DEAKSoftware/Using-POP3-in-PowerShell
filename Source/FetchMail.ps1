@@ -21,7 +21,7 @@
    1. Download the OpenPOP.NET library, either from SourceForge, or NuGet.
 
    2. Extract OpenPop.dll binary file from the .zip package into the
-      .\Binaries subdirectory.
+      ..\Binaries subdirectory.
 
    3. Supply the incoming email server configuration below, including the
       credentials needed for authentication.
